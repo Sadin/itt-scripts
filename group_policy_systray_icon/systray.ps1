@@ -5,11 +5,17 @@
 #        [Int16]$Setting
 #    )
 
+# In event not set already, Disable explorer from restarting via registry. ( Default for windows is to in fact, Restart )
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 0
 
+# Kill explorer.exe via Powershell
+Stop-Process -Name explorer.exe -Force
 
+# Set search values manually. ( Were looking for Ninja's systray application here, and we want to Always show icon thus the "2" )
 $ProgramName = 'njbar.exe'
 $Setting = 2
 
+# Run the script that searches for values set above in the registry, then make changes
 $encText = New-Object System.Text.UTF8Encoding
 [byte[]] $bytRegKey = @()
 $strRegKey = ""
@@ -115,3 +121,6 @@ $item = $items[$key]
             Set-ItemProperty $($(Get-Item 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify').PSPath) -name IconStreams -value $bytRegKey
     }
 }
+
+# Restart explorer.exe
+Start-Process explorer.exe
