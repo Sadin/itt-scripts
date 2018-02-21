@@ -10,7 +10,7 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -
 
 ## Only need if testing locally 
 # Kill explorer.exe via Powershell
-Stop-Process -ProcessName Explorer
+# Stop-Process -ProcessName Explorer
 
 # Set search values manually. ( Were looking for Ninja's systray application here, and we want to Always show icon thus the "2" )
 $ProgramName = 'njbar.exe'
@@ -124,4 +124,4 @@ $item = $items[$key]
 
 ## Only need if testing locally 
 # Restart explorer.exe
-Stop-Process -ProcessName Explorer
+# Start-Process explorer.exe
