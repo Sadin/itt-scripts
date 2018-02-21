@@ -1,9 +1,12 @@
 param(
     [Parameter(Mandatory=$true,HelpMessage='The name of the program')][string]$ProgramName,
-    [Parameter(Mandatory=$true,HelpMessage='The setting (2 = show icon and notifications 1 = hide icon and notifications, 0 = only show notifications')]
+    [Parameter(Mandatory=$true,HelpMessage='Program value')]
         [ValidateScript({if ($_ -lt 0 -or $_ -gt 2) { throw 'Invalid setting' } return $true})]
         [Int16]$Setting
     )
+
+#$ProgramName == 'njbar.exe'
+#$Setting == 2
 
 $encText = New-Object System.Text.UTF8Encoding
 [byte[]] $bytRegKey = @()
