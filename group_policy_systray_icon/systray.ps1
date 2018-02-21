@@ -6,10 +6,11 @@
 #    )
 
 # In event not set already, Disable explorer from restarting via registry. ( Default for windows is to in fact, Restart )
-# Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 0
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 0
 
+## Only need if testing locally 
 # Kill explorer.exe via Powershell
-Stop-Process -Name explorer -Force
+# Stop-Process -Name explorer -Force
 
 # Set search values manually. ( Were looking for Ninja's systray application here, and we want to Always show icon thus the "2" )
 $ProgramName = 'njbar.exe'
@@ -121,5 +122,6 @@ $item = $items[$key]
     }
 }
 
+## Only need if testing locally 
 # Restart explorer.exe
-Start-Process explorer.exe
+#Start-Process explorer.exe
