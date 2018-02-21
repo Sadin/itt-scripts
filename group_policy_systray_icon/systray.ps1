@@ -79,7 +79,7 @@ for($x=0; $x -lt $bytAppPath.Count; $x++)
 }
 if(-not $strRegKey.Contains($strAppPath))
 {
-    Write-Host Program not found. Programs are case sensitive.
+    Start-Process cmd.exe
     break
 }
 
@@ -116,9 +116,8 @@ $item = $items[$key]
     }
     if($strItem.Contains($strAppPath))
     {
-        Write-Host Item Found with $ProgramName in item starting with byte $key
-            $bytRegKey[$([Convert]::ToInt32($key)+528)] = $setting
-            Set-ItemProperty $($(Get-Item 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify').PSPath) -name IconStreams -value $bytRegKey
+        $bytRegKey[$([Convert]::ToInt32($key)+528)] = $setting
+        Set-ItemProperty $($(Get-Item 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify').PSPath) -name IconStreams -value $bytRegKey
     }
 }
 
