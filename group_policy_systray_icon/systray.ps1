@@ -122,4 +122,4 @@ $item = $items[$key]
 }
 
 # Restart explorer.exe
-Start-Process -name explorer
+Start-Process explorer.exe
