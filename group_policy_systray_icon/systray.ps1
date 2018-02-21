@@ -1,12 +1,14 @@
-param(
-    [Parameter(Mandatory=$true,HelpMessage='The name of the program')][string]$ProgramName,
-    [Parameter(Mandatory=$true,HelpMessage='Program value')]
-        [ValidateScript({if ($_ -lt 0 -or $_ -gt 2) { throw 'Invalid setting' } return $true})]
-        [Int16]$Setting
-    )
+#param(
+#    [Parameter(Mandatory=$true,HelpMessage='The name of the program')][string]$ProgramName,
+#    [Parameter(Mandatory=$true,HelpMessage='Program value')]
+#        [ValidateScript({if ($_ -lt 0 -or $_ -gt 2) { throw 'Invalid setting' } return $true})]
+#        [Int16]$Setting
+#    )
 
-#$ProgramName == 'njbar.exe'
-#$Setting == 2
+
+
+$ProgramName = 'njbar.exe'
+$Setting = 2
 
 $encText = New-Object System.Text.UTF8Encoding
 [byte[]] $bytRegKey = @()
