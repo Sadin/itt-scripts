@@ -6,7 +6,7 @@
 #    )
 
 # In event not set already, Disable explorer from restarting via registry. ( Default for windows is to in fact, Restart )
-Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 0
+# Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoRestartShell -Value 0
 
 # Kill explorer.exe via Powershell
 Stop-Process -Name explorer -Force
